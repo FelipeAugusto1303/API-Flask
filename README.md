@@ -1,35 +1,28 @@
-# Minha API
+# Produto API
 
-Este pequeno projeto faz parte do material diático da Disciplina **Desenvolvimento Full Stack Básico** 
+Este é o modulo backend que será avaliado pelos professores da Puc-Rio da disciplina de **Desenvolvimento Full Stack Básico**, este modulo foi desenvolvido em Flask python e possui funcionalidades para criar, buscar e deletar produtos.
 
-O objetivo aqui é ilutsrar o conteúdo apresentado ao longo das três aulas da disciplina.
+## Como executar
 
----
-## Como executar 
+vá ate o diretório raiz e execute os seguintes comandos no terminal
 
-
-Será necessário ter todas as libs python listadas no `requirements.txt` instaladas.
-Após clonar o repositório, é necessário ir ao diretório raiz, pelo terminal, para poder executar os comandos descritos abaixo.
-
-> É fortemente indicado o uso de ambientes virtuais do tipo [virtualenv](https://virtualenv.pypa.io/en/latest/installation.html).
-
-```
+```bash
 (env)$ pip install -r requirements.txt
 ```
 
 Este comando instala as dependências/bibliotecas, descritas no arquivo `requirements.txt`.
 
-Para executar a API  basta executar:
+Para executar a API basta executar:
 
-```
-(env)$ flask run --host 0.0.0.0 --port 5000
+```bash
+(env)$ flask run --host 0.0.0.0 --port 5176
 ```
 
 Em modo de desenvolvimento é recomendado executar utilizando o parâmetro reload, que reiniciará o servidor
-automaticamente após uma mudança no código fonte. 
+automaticamente após uma mudança no código fonte.
 
-```
-(env)$ flask run --host 0.0.0.0 --port 5000 --reload
+```bash
+(env)$ flask run --host 0.0.0.0 --port 5176 --reload
 ```
 
-Abra o [http://localhost:5000/#/](http://localhost:5000/#/) no navegador para verificar o status da API em execução.
+Abra o [http://localhost:5176/#/](http://localhost:5176/#/) no navegador para verificar o status da API em execução.
