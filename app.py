@@ -8,12 +8,12 @@ from model import Session, Produto
 from schemas import *
 from flask_cors import CORS
 
-info = Info(title="Minha API", version="1.0.0")
+info = Info(title="PUC-Rio Flask API", version="1.0.0")
 app = OpenAPI(__name__, info=info)
 CORS(app)
 
 home_tag = Tag(name="Documentação", description="Redireciona automaticamente para a tela do swagger")
-produto_tag = Tag(name="Produto", description="Adição, visualização e remoção de produtos à base")
+produto_tag = Tag(name="Produto", description="Adição, visualização e remoção de produtos ao database")
 
 @app.get('/', tags=[home_tag])
 def home():
@@ -35,11 +35,11 @@ def add_produto(form: ProdutoSchema):
         return apresenta_produto(produto), 200
 
     except IntegrityError as e:
-        error_msg = "Produto de mesmo nome já salvo na base :/"
+        error_msg = "Produto de mesmo nome já salvo"
         return {"mesage": error_msg}, 409
 
     except Exception as e:
-        error_msg = "Não foi possível salvar novo item :/"
+        error_msg = "Não foi possível salvar novo item"
         return {"mesage": error_msg}, 400
 
 
@@ -66,7 +66,7 @@ def get_produto(query: ProdutoBuscaSchema):
     produto = session.query(Produto).filter(Produto.id == produto_id).first()
 
     if not produto:
-        error_msg = "Produto não encontrado na base :/"
+        error_msg = "Produto não encontrado"
         return {"mesage": error_msg}, 404
     else:
         return apresenta_produto(produto), 200
@@ -84,5 +84,5 @@ def del_produto(query: ProdutoBuscaSchema):
     if count:
         return {"mesage": "Produto removido", "id": produto_id}
     else:
-        error_msg = "Produto não encontrado na base :/"
+        error_msg = "Produto não encontrado"
         return {"mesage": error_msg}, 404
