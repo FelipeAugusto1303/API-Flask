@@ -2,7 +2,6 @@ from pydantic import BaseModel
 from typing import Optional, List
 from model.produto import Produto
 
-from schemas import ComentarioSchema
 
 
 class ProdutoSchema(BaseModel):
@@ -17,7 +16,7 @@ class ProdutoBuscaSchema(BaseModel):
     """ Define como deve ser a estrutura que representa a busca. Que será
         feita apenas com base no nome do produto.
     """
-    nome: str = "Teste"
+    id: int = 1
 
 
 class ListagemProdutosSchema(BaseModel):
@@ -33,6 +32,7 @@ def apresenta_produtos(produtos: List[Produto]):
     result = []
     for produto in produtos:
         result.append({
+            "id": produto.id,
             "nome": produto.nome,
             "quantidade": produto.quantidade,
             "valor": produto.valor,
@@ -48,16 +48,13 @@ class ProdutoViewSchema(BaseModel):
     nome: str = "Banana Prata"
     quantidade: Optional[int] = 12
     valor: float = 12.50
-    total_cometarios: int = 1
-    comentarios:List[ComentarioSchema]
 
 
 class ProdutoDelSchema(BaseModel):
     """ Define como deve ser a estrutura do dado retornado após uma requisição
         de remoção.
     """
-    mesage: str
-    nome: str
+    id: int
 
 def apresenta_produto(produto: Produto):
     """ Retorna uma representação do produto seguindo o schema definido em
@@ -67,7 +64,5 @@ def apresenta_produto(produto: Produto):
         "id": produto.id,
         "nome": produto.nome,
         "quantidade": produto.quantidade,
-        "valor": produto.valor,
-        "total_cometarios": len(produto.comentarios),
-        "comentarios": [{"texto": c.texto} for c in produto.comentarios]
+        "valor": produto.valor
     }
