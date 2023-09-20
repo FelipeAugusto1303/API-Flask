@@ -11,15 +11,17 @@ class Produto(Base):
 
     id = Column("pk_produto", Integer, primary_key=True)
     nome = Column(String(100), unique=True)
+    descricao = Column(String(300))
     quantidade = Column(Integer)
     valor = Column(Float)
     data_insercao = Column(DateTime, default=datetime.now())
 
 
-    def __init__(self, nome:str, quantidade:int, valor:float,
+    def __init__(self, nome:str, descricao:str, quantidade:int, valor:float,
                  data_insercao:Union[DateTime, None] = None):
         
         self.nome = nome
+        self.descricao = descricao
         self.quantidade = quantidade
         self.valor = valor
 

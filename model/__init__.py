@@ -7,7 +7,7 @@ import os
 from model.base import Base
 from model.produto import Produto
 
-db_path = "database/"
+db_path = "produtodb/"
 
 if not os.path.exists(db_path):
    

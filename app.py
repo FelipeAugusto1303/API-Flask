@@ -26,6 +26,7 @@ def add_produto(form: ProdutoSchema):
     
     produto = Produto(
         nome=form.nome,
+        descricao=form.descricao,
         quantidade=form.quantidade,
         valor=form.valor)
     try:
@@ -69,7 +70,7 @@ def get_produto(query: ProdutoBuscaSchema):
         error_msg = "Produto não encontrado"
         return {"mesage": error_msg}, 404
     else:
-        return apresenta_produto(produto), 200
+        return mostra_produto(produto), 200
 
 
 @app.delete('/deleta_produto', tags=[produto_tag],

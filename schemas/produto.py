@@ -6,6 +6,7 @@ from model.produto import Produto
 
 class ProdutoSchema(BaseModel):
     nome: str = "Banana Prata"
+    descricao: str = "A banana prata é um alimento muito nutritivo rico em potassio"
     quantidade: Optional[int] = 12
     valor: float = 12.50
 
@@ -37,6 +38,7 @@ class ProdutoViewSchema(BaseModel):
     
     id: int = 1
     nome: str = "Banana Prata"
+    descricao: str = "A banana prata é um alimento nutritivo rico em potassio"
     quantidade: Optional[int] = 12
     valor: float = 12.50
 
@@ -52,3 +54,14 @@ def apresenta_produto(produto: Produto):
         "quantidade": produto.quantidade,
         "valor": produto.valor
     }
+
+def mostra_produto(produto: Produto):
+
+    return {
+        "id": produto.id,
+        "nome": produto.nome,
+        "descricao": produto.descricao,
+        "quantidade": produto.quantidade,
+        "valor": produto.valor
+    }
+    
