@@ -5,7 +5,6 @@ from model.produto import Produto
 
 
 class ProdutoSchema(BaseModel):
-    id: int = 1
     nome: str = "Banana Prata"
     quantidade: Optional[int] = 12
     valor: float = 12.50
